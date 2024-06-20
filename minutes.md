@@ -3,9 +3,12 @@
 
 
 ## June 20 Thu
+Weekly check-in with Michael:
+- Start small; restrict to binary combinactorial logic
+
 Plan for today:
 - [ ] Checkout 💾 from last meeting presentation
-- [ ] Finish manuals & Youtube videos
+- [x] Finish manuals & Youtube videos
 
 
 ### June 14 Fri
@@ -16,7 +19,7 @@ TODO:
 - [ ] Collect a dataset of ~50 PLC codes.
 - [ ] Look into compiler/simulator (some oracle).
 - [ ] PLC --> reduced form (CNF / bipartite)
-- ] ] Define vocab
+- [ ] Define vocab
 - [x] Read CNF paper Michael suggested
 
 
