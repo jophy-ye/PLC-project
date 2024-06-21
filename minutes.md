@@ -2,6 +2,15 @@
 ## Summer UROP 2024 with Wojceich Matusik & Michael Sun
 
 
+## June 21 Fri
+Unfortunately progress has been slow.
+- Turns out, Simulink cannot (verify?) read other formats of other proprietary software but can write.
+- Contacted Siemens (for TIA) and Rockwell (for Studio 5000).
+- Cleared some more tabs.
+TODO:
+- [ ] Read ["Anyone know a free open source PLC program"](https://www.reddit.com/r/PLC/comments/wpz34t/anyone_know_a_free_open_source_plc_program_thats/) on Reddit
+
+
 ## June 20 Thu
 Weekly check-in with Michael:
 - Start small; restrict to binary combinactorial logic

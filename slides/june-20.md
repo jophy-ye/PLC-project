@@ -16,10 +16,16 @@ I adopted a BFS on the sources, though Wojciech probably wants me to do DFS. Tha
 
 ## Code Libraries
 - 💾 [Rockwell Automation Sample Code Library](https://www.rockwellautomation.com/en-us/support/product/product-downloads/application-code-library/sample-code.html)
-    - .exe, only accessible with their Studio 5000? Nope!
+    - .exe, only accessible with their Studio 5000?
+- 💾? [Rockwell Automation Application Code Libraries](https://www.rockwellautomation.com/en-us/support/product/product-downloads/application-code-library.html)
+    - Machine Builder Libraries: ?
+    - Device Object Library: drives, motion, sensors, network, IO, etc.
+    - Process Application Code Library: generic, for end users & system integrators
 - 💾 [Siemens Open Library](https://openplclibrary.com/), developed with DMC.
     - Access through [Siemens TIA Portal](https://www.siemens.com/global/en/products/automation/industry-software/automation-software/tia-portal/highlights/tia-portal-cloud.html)?
     - Can we look into the code?
+- 💾 [Beckhoff infosys](https://infosys.beckhoff.com/) contains small examples.
+    - Website says the basic version of software is free! Check them out!
 - 💾 [Omron Sample Code Library](https://automation.omron.com/en/us/support/resources/sample-code/)
     - Haven't looked too deep into it
 - 💾 [Kollmorgen PLC Standard Library](https://webhelp.kollmorgen.com/kas4.01/Content/11.TechRefs/PLC-Standard/_OVRVW-PLC-Standard-Libraries.htm?tocpath=Technical%20References%7CProgramming%20Languages%7CPLC%20Standard%20Libraries%7C_____0)
@@ -28,7 +34,10 @@ I adopted a BFS on the sources, though Wojciech probably wants me to do DFS. Tha
 
 
 ## Software
-- [Simulink PLC coder](https://www.mathworks.com/help/plccoder/index.html?s_tid=CRUX_lftnav) from Mathworks, *free access for us*
+- Studio 5000 (Rockwell) (Simulation Interface)
+- TIA Portal (Siemens)
+- [Simulink PLC coder](https://www.mathworks.com/help/plccoder/index.html?s_tid=CRUX_lftnav) (Mathworks), *free access for us*
+- [Automation Direct](https://library.automationdirect.com/plc-software-helpful-features/), linked at the bottom
 
 
 ## Courses
