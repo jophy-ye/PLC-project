@@ -5,10 +5,10 @@
 ## June 21 Fri
 Unfortunately progress has been slow.
 - Turns out, Simulink cannot (verify?) read other formats of other proprietary software but can write.
-- Contacted Siemens (for TIA) and Rockwell (for Studio 5000).
+- Contacted & cc'ed Siemens (for TIA) and Rockwell (for Studio 5000).
 - Cleared some more tabs.
 TODO:
-- [ ] Read ["Anyone know a free open source PLC program"](https://www.reddit.com/r/PLC/comments/wpz34t/anyone_know_a_free_open_source_plc_program_thats/) on Reddit
+- [ ] Just look up "PLC" on Github
 
 
 ## June 20 Thu

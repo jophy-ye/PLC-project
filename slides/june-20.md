@@ -24,12 +24,14 @@ I adopted a BFS on the sources, though Wojciech probably wants me to do DFS. Tha
 - 💾 [Siemens Open Library](https://openplclibrary.com/), developed with DMC.
     - Access through [Siemens TIA Portal](https://www.siemens.com/global/en/products/automation/industry-software/automation-software/tia-portal/highlights/tia-portal-cloud.html)?
     - Can we look into the code?
+- 💾 [Mitsubishi Electric MELSOFT Library](https://www.mitsubishielectric-fa.cn/fb/english/melsoft_library/fa/products/cnt/plceng/download/library/other_languages.html), PLC samples
 - 💾 [Beckhoff infosys](https://infosys.beckhoff.com/) contains small examples.
     - Website says the basic version of software is free! Check them out!
 - 💾 [Omron Sample Code Library](https://automation.omron.com/en/us/support/resources/sample-code/)
     - Haven't looked too deep into it
 - 💾 [Kollmorgen PLC Standard Library](https://webhelp.kollmorgen.com/kas4.01/Content/11.TechRefs/PLC-Standard/_OVRVW-PLC-Standard-Libraries.htm?tocpath=Technical%20References%7CProgramming%20Languages%7CPLC%20Standard%20Libraries%7C_____0)
     - Haven't looked too deep into it
+- 💾 [OSCAT](http://www.oscat.de/), hardware independent open source library
 - 💾 Ladder logic + Arduino [repo](https://github.com/cpipero/ArduinoLadder) ([another one](https://github.com/wditch/plcLib/tree/master/examples), though in Arduino language)
 
 
@@ -38,6 +40,9 @@ I adopted a BFS on the sources, though Wojciech probably wants me to do DFS. Tha
 - TIA Portal (Siemens)
 - [Simulink PLC coder](https://www.mathworks.com/help/plccoder/index.html?s_tid=CRUX_lftnav) (Mathworks), *free access for us*
 - [Automation Direct](https://library.automationdirect.com/plc-software-helpful-features/), linked at the bottom
+- [PLC Fiddle](https://www.plcfiddle.com), an online playground of ladder logic.
+
+- [CSAIL OpenStack](https://tig.csail.mit.edu/shared-computing/open-stack/) offers Windows virtual machines (which we might need to run certain software)
 
 
 ## Courses
