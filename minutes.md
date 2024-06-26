@@ -2,20 +2,25 @@
 ## Summer UROP 2024 with Wojceich Matusik & Michael Sun
 
 
+## June 27 Thu
+Fourth weekly check-in with Michael.
+
+
 ## June 21 Fri
 Unfortunately progress has been slow.
 - Turns out, Simulink cannot (verify?) read other formats of other proprietary software but can write.
 - Contacted & cc'ed Siemens (for TIA) and Rockwell (for Studio 5000).
 - Cleared some more tabs.
+
 TODO:
-- [ ] Just look up "PLC" on Github
+- [x] Just look up "PLC code" on Github
 
 
 ## June 20 Thu
 Weekly check-in with Michael:
-- Start small; restrict to binary combinactorial logic
+- Start small; restrict to binary combinactorial logic (leave temporal logic)
 
-Plan for today:
+TODO:
 - [ ] Checkout 💾 from last meeting presentation
 - [x] Finish manuals & Youtube videos
 
@@ -26,8 +31,8 @@ Finally met Wojciech!
 
 TODO:
 - [ ] Collect a dataset of ~50 PLC codes.
-- [ ] Look into compiler/simulator (some oracle).
-- [ ] PLC --> reduced form (CNF / bipartite)
+- [x] Look into compiler/simulator (some oracle).
+- [x] PLC --> reduced form (CNF / bipartite)
 - [ ] Define vocab
 - [x] Read CNF paper Michael suggested
 
