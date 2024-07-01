@@ -7,8 +7,17 @@ Weekly check-in with Michael.
 - 🤔 [PLCs.net](http://www.plcs.net/downloads/), a rather huge data repository
     > The source is from members of this forum. They are free for your use.
 
-- (Siemens) [mateusz-talma/PLC-Siemens-S7-1200](https://github.com/mateusz-talma/PLC-Siemens-S7-1200/tree/master)
-- (Siemens LOGO!) [shawonhimu/plc](https://github.com/shawonhimu/plc) (~10)
+I've been going through the following repos, which are more accessible:
+- (1 large) (XML, Beckhoff) [Beckhoff-USA-Community/PackML_PLC_Example](https://github.com/Beckhoff-USA-Community/PackML_PLC_Example)
+- (1) (XML, Codesys) [tkucic/plc_hello_mixing_tank](https://github.com/tkucic/plc_hello_mixing_tank)
+- (~15) (Siemens) [mateusz-talma/PLC-Siemens-S7-1200](https://github.com/mateusz-talma/PLC-Siemens-S7-1200)
+- (~10) (Siemens LOGO!) [shawonhimu/plc](https://github.com/shawonhimu/plc)
+- Other larger code libraries/examples not yet accessible without proprietary software (still connecting with companies)
+
+(Issues mentioned before: these examples might be like "Hello World" in programming, not sure about the quality of grammar learned.)
+- (small examples) [Mitsubishi Electric MELSOFT Library](https://www.mitsubishielectric-fa.cn/fb/english/melsoft_library/fa/products/cnt/plceng/download/library/other_languages.html)
+- (small examples) [Beckhoff infosys](https://infosys.beckhoff.com/)
+
 
 
 ## Graph Structure Proposals
@@ -53,6 +62,10 @@ Traversal $\leftrightarrow$ tree/circuit/rung, program $\leftrightarrow$ forest
 - TIA Portal (Siemens)
 - [OpenPLC software](https://openplcproject.gitlab.io/start/index.html), completely open source but can only handle PLCopen format
 
-- Command line parser?
+- Command line parser? Library?
 
 - [SimPyLC](https://github.com/QQuick/SimPyLC?tab=readme-ov-file)??? (TO READ)
+
+
+## Misc (unrelated)
+- Using GPT-4 to generate test cases for PLC ([link](https://github.com/hkoziolek/LLM-CodeGen-TestGen))
