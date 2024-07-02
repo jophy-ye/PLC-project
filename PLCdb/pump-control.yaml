@@ -1,0 +1,34 @@
+---
+Name:     Pump Control
+Source:   CONTROLLINO-PLC/OpenPLC_examples/pump_control/
+          (https://github.com/CONTROLLINO-PLC/OpenPLC_examples/tree/master/masterpump_control)
+Update:   July 2, 2024
+
+Input:
+  Start:  start push button (momentary)
+  Stop:   stop push button
+  Emergency:  emergency push button
+  HighLevel:  sensor of high water level - true iff higher than threshold
+  LowLevel:   sensor of low water level - true iff higher than threshold
+
+Variable:
+  R:  whether machine is on
+
+Output:
+  PC: pump control output variable
+
+Rungs:
+  - name: Start, stop, emergency button
+    info: Classic momentary start/stop implementation with emergency button
+    rung:
+      R:  (Start or R) and Stop and (not Emergency)
+  - name: High level control
+    info: Stop pump when level is above high level switch or process is stopped
+    rung:
+      PC: (not HighLevel) and R   # original: not (HighLevel or not R)
+      type: set
+  - name: Low level control
+    info: Start pump when level is below low level switch (or process stopped)
+    rung:
+      PC: R and (not LowLevel)
+      type: reset
