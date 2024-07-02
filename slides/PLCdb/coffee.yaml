@@ -1,0 +1,66 @@
+---
+Name:     Coffee Machine with Pushbuttons
+Source:   PLCs.net --> Other_PLC_Brands/
+          (http://www.plcs.net/downloads/index.php?&direction=0&order=&directory=Other_PLC_Brands)
+Note:
+  - temporal logic, specifically timers, not explicitly recorded
+Update:   July 1, 2024
+
+Input:
+  Start:  start push button (lighted)
+  Milk:   milk push button
+  Sugar:  sugar push button
+
+Variable:
+  D:  dispense mode   # whether the whole process is running
+  CupDropTD:  cup-drop 5 seconds timer done
+  WaterTD:  hot water for 10 seconds timer done
+  SugarTD:  done adding sugar for 5 seconds (only controlled by timer)
+  SugarD:   done adding sugar, may be triggered by releasing button or timer
+  MilkTD:   done adding milk for 5 seconds
+  MilkD:    done adding milk, may be triggered by releasing button or timer
+  CompTD:   complete light 5 seconds timer done
+
+Output:
+  StartL: start lamp
+  CompL:  complete lamp
+  SugarL: sugar lamp
+  MilkL:  milk lamp
+  CupDrop:  cup dropped
+  WaterFeed:  feed hot water
+  Sugar:  adding sugar
+  Milk:   adding milk
+
+Rungs:
+  - name: Step 1 -- wait for a start-button press
+    info: Select sugar or milk before pressing start
+    rung:
+      D, StartL: (Start or D) and (not CT)
+  - name: Step 1A -- sugar lamp
+    info: If sugar pushbutton (momentary) was pressed, turn on sugar lamp display words.
+    rung:
+      SugarL: (Sugar or SugarL) and (not CT)
+  - name: Step 1B -- milk lamp
+    info: If milk pushbutton (momentary) was pressed, turn on milk lamp display words.
+    rung:
+      MilkL: (Milk or SugarL) and (not CT)
+  # So, adding sugar => adding milk. Converse not true.
+  - name: Step 2 -- drop cup
+    info: Output on for 5 seconds
+    rung:
+      CupDrop:  D and (not CupDropT)
+      # timer starts only when D becomes true
+  - name: Step 3 -- feed hot water for 10 seconds
+    rung:
+      WaterFeed:  D and CupDropTD and (not WaterTD)
+  - name: Step 4 -- feed sugar for 5 seconds or until sugar button released
+    rung:
+      Sugar:  D and WaterTD and SugarL and (not SugarTD)
+      SugarD: D and WaterTD and (not SugarL or SugarTD)
+  - name: Step 5 -- feed milk for 5 seconds or until milk button released
+    rung:
+      Milk:   D and SugarD and MilkL and (not MilkTD)
+      MilkD:  D and SugarD and (not MilkL or MilkTD)
+  - name: Step 6 -- light complete lamp for 5 seconds
+    rung:
+      CompL:  D and MilkD and (not CompTD)
