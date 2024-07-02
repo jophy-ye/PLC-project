@@ -1,0 +1,32 @@
+---
+Name:     Simple Mixer
+Source:   Splashster/GradProject/PLC (v5)
+          (https://github.com/Splashster/GradProject/tree/3faa15519e55d4113b828f9c2668c380894d979d/PLC)
+Description:    When turned on, mixer spins in a direction for 3s, and the other direction for 5s.
+Update:   July 2, 2024
+
+Input:
+  Start:  start push button
+  Milk:   milk push button
+  Sugar:  sugar push button
+
+Variable:
+  Finished: as the name suggests
+  Dir0TD:   direction 0 for 3 seconds timer done
+  Dir1TD:   direction 1 for 5 seconds (after direction 0) timer done
+
+Output:
+  Motor:    whether the motor is on
+  MotorD:   spinning direction of motor (boolean)   # false initially
+
+Rungs:
+  - name:   Start
+    rung:
+      Motor:    Start and (not Finished)
+  - name:   Spin - direction 0
+    rung:
+      MotorD:   Motor and (not Dir0TD)
+      # Of course, only when Motor is true is the 3s timer started
+  - name:   Spin - direction 1
+    rung:
+      Finished: MotorD and (not Dir1TD)

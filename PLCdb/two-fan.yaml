@@ -1,0 +1,26 @@
+---
+Name:     Two Fans Control
+Source:   Splashster/GradProject/PLC (v5)
+          (https://github.com/Splashster/GradProject/tree/3faa15519e55d4113b828f9c2668c380894d979d/PLC)
+Description:  When turned on, mixer spins in a direction for 3s, and the other direction for 5s.
+Note:     Should I just delete this example? ...
+Update:   July 2, 2024
+
+Input:
+  Overheat: temp >= overheat threshold
+  Cooldown: temp > cooldown threshold, need to cooldown
+  Critical: temp >= critical temperature threshold
+
+Variable:
+
+Output:
+  Fan1: primary fan
+  Fan2: secondary fan
+
+Rungs:
+  - name:   primary fan
+    rung:
+      Fan1: (Overheat or Cooldown)
+  - name:   secondary fan
+    rung:
+      Fan2: Critical
