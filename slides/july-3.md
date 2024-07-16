@@ -64,7 +64,7 @@ Traversal $\leftrightarrow$ tree/circuit/rung, program $\leftrightarrow$ forest
 - TIA Portal (Siemens)
 - [OpenPLC software](https://openplcproject.gitlab.io/start/index.html), completely open source but can only handle PLCopen format
 
-- Command line parser? Library? Maybe [beremiz/beremiz](https://github.com/beremiz/beremiz?tab=readme-ov-file)?
+- Command line parser? Library? Maybe [beremiz/beremiz](https://github.com/beremiz/beremiz?tab=readme-ov-file), or [nucleron/matiec](https://github.com/nucleron/matiec/tree/master)?
 
 - [SimPyLC](https://github.com/QQuick/SimPyLC?tab=readme-ov-file)??? (TO READ)
 

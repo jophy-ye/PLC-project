@@ -4,6 +4,12 @@
 
 ## June 27 Thu
 Fourth weekly check-in with Michael.
+- Presented PLCdb/pump_control
+
+TODO:
+- [ ] Master CNF (maybe helpful https://mamo.dev/first-order-logic-tool)
+- [ ] Come up with examples in the factory robotics setting.
+- [ ] Access TIA Portal from Siemens
 
 
 ## June 21 Fri
