@@ -2,7 +2,14 @@
 Name:     Pump Control
 Source:   CONTROLLINO-PLC/OpenPLC_examples/pump_control/
           (https://github.com/CONTROLLINO-PLC/OpenPLC_examples/tree/master/masterpump_control)
-Update:   July 2, 2024
+Annotator:  Jophy Ye
+Update:   July 18, 2024
+Description:  |
+  It's a controller for a pump that fills a water tank dynamically.
+  When the pump is started (not stopped or emergency stopped), it maintains the water level
+  so that
+  (1) when water is below low level, start the pump;
+  (2) when water is above high level, stop the pump.
 
 Input:
   Start:  start push button (momentary)
@@ -12,7 +19,7 @@ Input:
   LowLevel:   sensor of low water level - true iff higher than threshold
 
 Variable:
-  R:  whether machine is on
+  Run:  whether machine is on
 
 Output:
   PC: pump control output variable
@@ -21,14 +28,27 @@ Rungs:
   - name: Start, stop, emergency button
     info: Classic momentary start/stop implementation with emergency button
     rung:
-      R:  (Start or R) and Stop and (not Emergency)
+      Run:  (Start or Run) and (¬Stop) and (¬Emergency)
+      type: equal
+      # (Start or Run) and (¬Stop) and (¬Emergency) = Run
   - name: High level control
     info: Stop pump when level is above high level switch or process is stopped
     rung:
-      PC: (not HighLevel) and R   # original: not (HighLevel or not R)
-      type: set
+      PC: HighLevel or (¬Run)
+      type: reset
+      # HighLevel or (¬Run) ==> ¬PC
   - name: Low level control
     info: Start pump when level is below low level switch (or process stopped)
     rung:
-      PC: R and (not LowLevel)
-      type: reset
+      PC: Run and (¬LowLevel)
+      type: set
+      # Run and (¬LowLevel) ==> PC
+
+# Master CNF of the 3 rungs above, basically the AND of those 3 CNFs.
+CNF: >-
+  (¬Start or Stop or Emergency or Run) and 
+  (¬Stop or ¬Run) and 
+  (¬Emergency or ¬Run) and 
+  (¬HighLevel or ¬PC) and 
+  (Run or ¬PC) and 
+  (¬Run or Lowlevel or PC)
