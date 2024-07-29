@@ -17,12 +17,12 @@ PLC ladder logic $\Leftrightarrow$ Boolean formula/circuit
 </details>
 
 
-### NeuralSAT's approach
+### NeuroSAT's approach
 ![ladder rung example](rung-ex.png)
 1. $d = (a \lor b) \land c \Rightarrow (C \lor \bar{d}) \land (\bar{C} \lor d)$ (CNF)
-2. Follow *NeuralSAT* paper to build a bipartite graph: one subset of nodes contains the clauses, and the other has the literals.
+2. Follow *NeuroSAT* paper to build a bipartite graph: one subset of nodes contains the clauses, and the other has the literals.
 
-    ![NeuralSAT paper graph construction](NeuralSAT.png)
+    ![NeuroSAT paper graph construction](NeuroSAT.png)
 
 - Pros: linearized; no recursive hierarchy
 - Cons: generate graph rather than message passing; blow-up factor; denser graph
@@ -44,7 +44,7 @@ $R = (A \land B) \lor (C \land D) = (A \lor C) \land (A \lor D) \land (B \lor C)
 
 
 ### Modified version?
-![Philosophy behind NeuralSAT](june-27-pre.png)
+![Philosophy behind NeuroSAT](june-27-pre.png)
 1. Linearise each rung (into CNF) for training
 2. CNF $\leftrightarrow$ random walk on motif graph
 
