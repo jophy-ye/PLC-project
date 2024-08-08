@@ -1,0 +1,42 @@
+---
+Name:     Conveyer Belt
+Author:   Jophy Ye
+Update:   July 18, 2024
+Description:  |
+  A conveyer belt that only ejects new items when the space before it is clear.
+  For instance, those at the baggage reclaim areas of an airport only ejects a luggage
+  when there are no luggages directly below its mouth, i.e., space is clear.
+
+Input:
+  Start:  start push button (momentary)
+  Stop:   stop push button
+  Clear:  sensor input of whether there are no objects blocking the belt's mouth.
+  Object: sensor input of whether there's an item on the belt, right at the mouth (almost out).
+
+Variable:
+  Run:  whether machine is on
+
+Output:
+  Move:   conveyer belt output variable (whether it's running)
+
+Rungs:
+  - name: Start, stop
+    info: Classic momentary start/stop implementation
+    rung:
+      Run:  (Start or Run) and (¬Stop)
+      type: equal
+  - name: Move control
+    info: >
+      The conveyer belt should move unless the space in front isn't clear and there's 
+      an item on the belt going out soon.
+    rung:
+      Move: Run and (Clear or ¬Object)  # Run and not (not Clear and Object)
+      type: equal
+
+CNF: >-
+  (¬Start or Stop or Run) and 
+  (¬Stop or ¬Run) and 
+  (¬Move or Run) and 
+  (¬Move or Clear or ¬Object) and 
+  (Move or ¬Run or ¬Clear) and 
+  (Move or ¬Run or Object)
