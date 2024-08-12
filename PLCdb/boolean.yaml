@@ -1,0 +1,52 @@
+---
+Name:     Boolean Logic
+Author:   Jophy Ye
+Update:   August 5, 2024
+Source:   https://www.sanfoundry.com/plc-program-implement-various-logic-gates/
+Description:  |
+  A basic ladder logic program that computes the logical AND, OR, NOT, XOR.
+
+Input:
+  A Input1: the first boolean input
+  B Input2: the second boolean input
+
+Output:
+  C And:    Logical AND of Input1 and Input2
+  D Or:     Logical OR of Input1 and Input2
+  E Not:    Logical NOT of Input1
+  F Xor:    Logical EX-OR of Input1 and Input2. It's true iff exactly one of them is true.
+
+Rungs:
+  - name: And
+    rung:
+      And:  Input1 and Input2
+      type: equal
+  - name: Or
+    rung:
+      Or:   (Input1 or Input2)
+      type: equal
+  - name: Not
+    info: Compute the logical not of Input1
+    rung:
+      Not:  (¬Input1)
+      type: equal
+  - name: Xor
+    info: Compute the logical xor
+    rung:
+      Xor:  (Input1 or Input2) and (¬Input1 and ¬Input2)
+      type: equal
+      # (Input1 and ¬Input2) or (¬Input1 and Input2)
+
+CNF: >-
+  (¬And or Input1) and
+  (¬And or Input2) and
+  (And or ¬Input1 or ¬Input2) and
+  (¬Or or Input1 or Input2) and
+  (Or or ¬Input1) and
+  (Or or ¬Input2) and
+  (¬Not or ¬Input1) and
+  (Not or Input1) and
+  (¬Xor or Input1 or Input2) and
+  (¬Xor or ¬Input1 or ¬Input2) and
+  (Xor or ¬Input1 or Input2) and
+  (Xor or ¬Input2 or Input1)
