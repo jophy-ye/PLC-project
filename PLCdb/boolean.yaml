@@ -10,6 +10,8 @@ Input:
   A Input1: the first boolean input
   B Input2: the second boolean input
 
+Variable:
+
 Output:
   C And:    Logical AND of Input1 and Input2
   D Or:     Logical OR of Input1 and Input2

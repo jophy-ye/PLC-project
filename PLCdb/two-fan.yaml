@@ -1,15 +1,18 @@
 ---
 Name:     Two Fans Control
-Source:   Splashster/GradProject/PLC (v5)
-          (https://github.com/Splashster/GradProject/tree/3faa15519e55d4113b828f9c2668c380894d979d/PLC)
-Description:  When turned on, mixer spins in a direction for 3s, and the other direction for 5s.
-Note:     Should I just delete this example? ...
+Source:   .?    # TODO: fill in source
+Description: |
+  Turn the first fan on if and only if the current temperature is at least the overheat
+  temperature threshold or above a cooldown threshold specified by the user.
+  Turn the second fan on if and only if it's at least the critical temperature threshold.
+Note: Should I just delete this example?
 Update:   July 2, 2024
+Annotator:  Jophy Ye
 
 Input:
   Overheat: temp >= overheat threshold
   Cooldown: temp > cooldown threshold, need to cooldown
-  Critical: temp >= critical temperature threshold
+  Critical: If temp >= critical temperature threshold, i.e., whether Fan2 should be on.
 
 Variable:
 
@@ -21,6 +24,15 @@ Rungs:
   - name:   primary fan
     rung:
       Fan1: (Overheat or Cooldown)
+      type: equal
   - name:   secondary fan
     rung:
       Fan2: Critical
+      type: equal
+
+CNF: >-
+  (¬Fan1 or Overheat or Cooldown) and
+  (Fan1 or ¬Overheat) and
+  (Fan1 or ¬Cooldown) and
+  (¬Fan2 or Critical) and
+  (Fan2 or ¬Critical)
