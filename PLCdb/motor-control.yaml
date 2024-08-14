@@ -1,0 +1,35 @@
+---
+Name:     Motor Control
+Source:   GPT 4-o, with prompt "Generate some PLC examples for me"
+Annotator:  Jophy Ye
+Update:   July 18, 2024
+Description:  |
+  This program controls a motor. It uses a start button, a stop button, and a motor output.
+
+Input:
+  Start:  A push button to start the motor. True iff it's pressed (normally closed). 
+  Stop:   A stop button to stop the motor. True iff it's pressed (normally closed). 
+
+Variable:
+
+Output:
+  Motor:  The motor output. True iff it's on.
+
+Rungs:
+  - name: Motor Control
+    info: |
+      1. When the Start button is initially pressed, if the Stop button is not pressed,
+          the Motor output will be activated (becomes true).
+      2. Even if the Start button is released, the Motor will stay true/on because the rung
+          includes a Motor variable connected in parallel.
+      3. When the Stop Button is pressed, the Motor output will be deactivated, and stays
+          deactivated after the stop button is released since the first clause is not false.
+    rung:
+      Motor:  (Start or Motor) and (¬Stop)
+      type:   equal
+      # (Start or Motor) and (¬Stop) = Motor
+
+# Master CNF
+CNF: >-
+  (¬Motor or ¬Stop) and
+  (Motor or ¬Start or Stop)

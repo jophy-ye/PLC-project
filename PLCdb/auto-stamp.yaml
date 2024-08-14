@@ -1,0 +1,99 @@
+---
+Name:     Stamping of Parts
+Source:   https://www.sanfoundry.com/plc-program-operate-stamping-parts/
+Author:   Jophy Ye
+Update:   July 29, 2024
+Description:  |
+  When a part is on the conveyor belt at position 1 and when the start button is pressed,
+  it moves to position 2.
+  Upon reaching position 2, it stops for the stamping operation to take place.
+  After stamping, it automatically moves to position 3.
+  It stops at position 3, where the part is removed manually.
+  Assume at most one part is on the conveyor at a time.
+  Add limit switches, interlocks, push buttons, etc. as required.
+
+  - Assuming all the contacts available are of Normally Open type.
+    (Outputs default to false).
+  - Use of Level Switches to detect the positions 1, 2 and 3.
+  - Reversible motor controlling the belt.
+  - LSDN and LSUP are two other limit switches which detect the lower most and upper most
+    position of the stamper arm.
+  - Interlocking by using XIC contacts in the software in order to prevent from malfunction.
+
+Input:
+  Start:  momentary start push button to start the conveyor belt
+  Stop:   momentary stop push button
+  Restart: >-
+    push button to restart Motor if CR2 is used when the process is stuck in the middle
+  LevelSwitch1:   level switch to detect position 1
+  LevelSwitch2:   level switch to detect position 2
+  LevelSwitch3:   level switch to detect position 3
+  G LSDN:   limit switch that detects the lower most position of the stamper arm
+  H LSUP:   limit switch that detects the upper most position of the stamper arm
+
+Variable:
+  I CR:
+  J CR1:
+  K CR2:
+  L CR3:
+  M CR4:
+
+Output:
+  N UpMotor:  run the motor moves the belt in the forward direction
+  O DownMotor:  run the motor in the reverse direction
+  P Motor:
+
+# TODO: supplement with name and info
+Rungs:
+  - rung:
+      CR: ((Start and LevelSwitch1) or CR) and (¬Stop)
+      type: equal
+  - rung:
+      CR1:  CR and (¬LevelSwitch2) and (¬LevelSwitch3)
+      type: equal
+  - rung:
+      CR2:  (¬LevelSwitch1) and (Restart or CR2) and (¬LevelSwitch3)  # ? check Restart
+      type: equal
+  - rung:
+      CR3:  (LevelSwitch1 or CR2 or CR3 or CR4) and (¬LSUP)
+      type: equal
+  - rung:
+      UpMotor:  CR3
+      type: equal
+  - rung:
+      CR4:  ((CR and LSDN) or CR4) and (¬LevelSwitch3)
+      type: equal
+  - rung:
+      DownMotor:  LevelSwitch2 and (¬CR4) and (¬CR2)
+      type: equal
+  - rung:
+      Motor:  CR1 or CR2 or CR4
+      type: equal
+
+# Master CNF
+CNF: >-
+  (¬CR or ¬Stop) and
+  (CR or ¬Start or ¬LevelSwitch1 or Stop) and
+  (¬CR1 or CR) and
+  (¬CR1 or ¬LevelSwitch2) and
+  (¬CR1 or ¬LevelSwitch3) and
+  (CR1 or ¬CR or LevelSwitch2 or LevelSwitch3) and
+  (¬CR2 or ¬LevelSwitch1) and
+  (¬CR2 or ¬LevelSwitch3) and
+  (CR2 or LevelSwitch1 or ¬Restart or LevelSwitch3) and
+  (¬CR3 or ¬LSUP) and
+  (CR2 or ¬LevelSwitch1 or LSUP) and
+  (CR2 or ¬CR2 or LSUP) and
+  (CR2 or ¬CR4 or LSUP) and
+  (¬UpMotor or CR2) and
+  (UpMotor or ¬CR2) and
+  (¬CR4 or ¬LevelSwitch3) and
+  (CR4 or ¬CR or ¬LSDN or LevelSwitch3) and
+  (¬DownMotor or LevelSwitch2) and
+  (¬DownMotor or ¬CR2) and
+  (¬DownMotor or ¬CR4) and
+  (DownMotor or ¬LevelSwitch2 or CR2 or CR4) and
+  (¬Motor or CR1 or CR2 or CR4) and
+  (Motor or ¬CR1) and
+  (Motor or ¬CR2) and
+  (Motor or ¬CR4)
