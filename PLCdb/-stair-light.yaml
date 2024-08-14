@@ -1,0 +1,26 @@
+---
+Name:     Stair Light Control
+Source:   CONTROLLINO-PLC/OpenPLC_examples/light_control/
+          (https://github.com/CONTROLLINO-PLC/OpenPLC_examples/tree/master/light_control)
+Description:
+  The switches at both ends of the stairs are push buttons and will turn the lights on and off.
+  The lights will turn on and off in sequence with a delay of N milliseconds (see the initial value of T_SEQUENCE).
+  The lights will turn off after N seconds (see initial value T_OFF_LIGHTS) if no presence is detected on a sensor that is placed in the middle of the stairs.
+  # TODO: input pulses
+Update:   July 2, 2024
+Annotator:  Jophy Ye
+
+Input:
+  Start:  start push button (momentary)
+  Stop:   stop push button
+
+Variable:
+
+Output:
+  PC: pump control output variable
+
+Rungs:
+  - name: .
+    info: .
+    rung: 
+      LC: 
