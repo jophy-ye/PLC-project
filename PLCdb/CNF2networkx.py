@@ -28,10 +28,17 @@ assert os.path.exists(filepath) and src_ext == '.yaml', "Invalid db file provide
 # load from db file
 try:
     with open(filepath, 'r') as stream:
-        CNF = yaml.safe_load(stream)['CNF']
+        loaded = yaml.safe_load(stream)
+        CNF = loaded['CNF']
+        var2vocab = loaded['VocabMap']
 except KeyError as e:
-    print("The provided db instance doesn't include a 'CNF' field.", file=sys.stderr)
+    print("Missing 'CNF' or 'VocabMap' fields in the provided db file.", file=sys.stderr)
     raise e
+
+# add complement to VocabMap
+for key, value in list(var2vocab.items()):
+    assert type(key) is str and type(value) is str
+    var2vocab[f'~{key}'] = value
 
 
 bool_algebra = BooleanAlgebra()
@@ -46,8 +53,9 @@ for idx, clause in enumerate(CNF.args):
     clause_name = f'C{idx}'
     graph.add_nodes_from([clause_name], bipartite=0)
     for literal in clause.args:
-        graph.add_nodes_from([str(literal)], bipartite=1)
-        graph.add_edges_from([(clause_name, str(literal))])
+        vocab = var2vocab[str(literal)]     # str(literal) 
+        graph.add_nodes_from([vocab], bipartite=1)
+        graph.add_edges_from([(clause_name, vocab)])
 assert is_bipartite(graph)
 
 # save graph object to file
