@@ -36,3 +36,10 @@ CNF: >-
   (Fan1 or ¬Cooldown) and
   (¬Fan2 or Critical) and
   (Fan2 or ¬Critical)
+
+VocabMap:
+  Overheat: TemperatureSwitch
+  Cooldown: TemperatureSwitch
+  Critical: TemperatureSwitch
+  Fan1:   Motor
+  Fan2:   Motor

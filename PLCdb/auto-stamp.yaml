@@ -28,20 +28,20 @@ Input:
   LevelSwitch1:   level switch to detect position 1
   LevelSwitch2:   level switch to detect position 2
   LevelSwitch3:   level switch to detect position 3
-  G LSDN:   limit switch that detects the lower most position of the stamper arm
-  H LSUP:   limit switch that detects the upper most position of the stamper arm
+  LSDN:   limit switch that detects the lower most position of the stamper arm
+  LSUP:   limit switch that detects the upper most position of the stamper arm
 
 Variable:
-  I CR:
-  J CR1:
-  K CR2:
-  L CR3:
-  M CR4:
+  CR:   TODO
+  CR1:  TODO
+  CR2:  TODO
+  CR3:  TODO
+  CR4:  TODO
 
 Output:
-  N UpMotor:  run the motor moves the belt in the forward direction
-  O DownMotor:  run the motor in the reverse direction
-  P Motor:
+  UpMotor:  TODO (old. run the motor moves the belt in the forward direction)
+  DownMotor:  TODO (old. run the motor in the reverse direction)
+  Motor:    TODO
 
 # TODO: supplement with name and info
 Rungs:
@@ -97,3 +97,21 @@ CNF: >-
   (Motor or ¬CR1) and
   (Motor or ¬CR2) and
   (Motor or ¬CR4)
+
+VocabMap:
+  Start:    PushButton
+  Stop:     PushButton
+  Restart:  PushButton
+  LevelSwitch1:   LevelSwitch
+  LevelSwitch2:   LevelSwitch
+  LevelSwitch3:   LevelSwitch
+  LSDN:   LevelSwitch
+  LSUP:   LevelSwitch
+  CR:   Computation
+  CR1:  Computation
+  CR2:  Computation
+  CR3:  Computation
+  CR4:  Computation
+  UpMotor:    Arm
+  DownMotor:  Arm
+  Motor:      Conveyor

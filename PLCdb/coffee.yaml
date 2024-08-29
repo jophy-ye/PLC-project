@@ -29,8 +29,8 @@ Output:
   MilkL:  milk lamp
   CupDrop:  cup dropped
   WaterFeed:  feed hot water
-  Sugar:  adding sugar
-  Milk:   adding milk
+  SugarFeed:  adding sugar
+  MilkFeed:   adding milk
 
 Rungs:
   - name: Step 1 -- wait for a start-button press
@@ -61,15 +61,36 @@ Rungs:
       type:   equal
   - name: Step 4 -- feed sugar for 5 seconds or until sugar button released
     rung:
-      Sugar:  D and WaterTD and SugarL and (not SugarTD)
-      SugarD: D and WaterTD and (not SugarL or SugarTD)
+      SugarFeed:  D and WaterTD and SugarL and (not SugarTD)
+      SugarD:     D and WaterTD and (not SugarL or SugarTD)
       type:   equal
   - name: Step 5 -- feed milk for 5 seconds or until milk button released
     rung:
-      Milk:   D and SugarD and MilkL and (not MilkTD)
-      MilkD:  D and SugarD and (not MilkL or MilkTD)
+      MilkFeed:   D and SugarD and MilkL and (not MilkTD)
+      MilkD:      D and SugarD and (not MilkL or MilkTD)
       type:   equal
   - name: Step 6 -- light complete lamp for 5 seconds
     rung:
       CompL:  D and MilkD and (not CompTD)
       type:   equal
+
+VocabMap:
+  Start:  PushButton
+  Milk:   PushButton
+  Sugar:  PushButton
+  D:  Computation
+  CupDropTD:  Timer
+  WaterTD:  Timer
+  SugarTD:  Timer
+  SugarD:   Computation
+  MilkTD:   Timer
+  MilkD:    Computation
+  CompTD:   Timer
+  StartL: IndicatorLight
+  CompL:  IndicatorLight
+  SugarL: IndicatorLight
+  MilkL:  IndicatorLight
+  CupDrop:  Motor
+  WaterFeed:  Pump
+  SugarFeed:  Pump
+  MilkFeed:   Pump

@@ -1,23 +1,26 @@
 ---
-Name:     Conveyer Belt
+Name:     Conveyor Belt
 Author:   Jophy Ye
 Update:   July 18, 2024
 Description:  |
-  A conveyer belt that only ejects new items when the space before it is clear.
+  A conveyor belt that only ejects new items when the space before it is clear.
   For instance, those at the baggage reclaim areas of an airport only ejects a luggage
   when there are no luggages directly below its mouth, i.e., space is clear.
 
 Input:
   Start:  start push button (momentary)
   Stop:   stop push button
-  Clear:  sensor input of whether there are no objects blocking the belt's mouth.
-  Object: sensor input of whether there's an item on the belt, right at the mouth (almost out).
+  Clear: >-
+    ultrasonic sensor input of whether there are no objects blocking the belt's mouth.
+  Object: >-
+    ultrasonic sensor input of whether there's an item on the belt,
+    right at the mouth (almost out).
 
 Variable:
   Run:  whether machine is on
 
 Output:
-  Move:   conveyer belt output variable (whether it's running)
+  Move:   conveyor belt output variable (whether it's running)
 
 Rungs:
   - name: Start, stop
@@ -40,3 +43,11 @@ CNF: >-
   (¬Move or Clear or ¬Object) and 
   (Move or ¬Run or ¬Clear) and 
   (Move or ¬Run or Object)
+
+VocabMap:
+  Start:  PushButton
+  Stop:   PushButton
+  Clear:  UltrasonicSensor
+  Object: UltrasonicSensor
+  Run:  IsOn
+  Move:   Conveyor

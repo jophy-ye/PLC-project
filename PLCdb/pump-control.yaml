@@ -51,4 +51,13 @@ CNF: >-
   (¬Emergency or ¬Run) and 
   (¬HighLevel or ¬PC) and 
   (Run or ¬PC) and 
-  (¬Run or Lowlevel or PC)
+  (¬Run or LowLevel or PC)
+
+VocabMap:
+  Start:  PushButton
+  Stop:   PushButton
+  Emergency:  PushButton
+  HighLevel:  LevelSwitch
+  LowLevel:   LevelSwitch
+  Run:  IsOn
+  PC:   Pump

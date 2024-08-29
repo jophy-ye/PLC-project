@@ -24,3 +24,8 @@ Rungs:
     info: .
     rung: 
       LC: 
+
+VocabMap:
+  Start:  PushButton
+  Stop:   PushButton
+  PC:     Pump

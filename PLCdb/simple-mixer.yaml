@@ -11,7 +11,7 @@ Input:
   Start:  start push button
 
 Variable:
-  Finished: as the name suggests, initially false
+  Finished: indicator light of the finish status (as the name suggests), initially false
   Dir0TD:   direction 0 for 3 seconds timer done, starts only when Motor becomes true
   Dir1TD: >-
     direction 1 for 5 seconds (after direction 0) timer done,
@@ -47,3 +47,11 @@ CNF: >-
   (¬Finished or MotorD) and
   (¬Finished or ¬Dir1TD) and
   (Finished or ¬MotorD or Dir1TD)
+
+VocabMap:
+  Start:  PushButton
+  Finished: IndicatorLight
+  Dir0TD:   Timer
+  Dir1TD:   Timer
+  Motor:  Motor
+  MotorD:   Motor

@@ -33,3 +33,8 @@ Rungs:
 CNF: >-
   (¬Motor or ¬Stop) and
   (Motor or ¬Start or Stop)
+
+VocabMap:
+  Start:  PushButton 
+  Stop:   PushButton
+  Motor:  Motor
